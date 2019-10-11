@@ -1,0 +1,49 @@
+h2 {
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 7px;
+  text-shadow: -1px -1px 1px rgb(78, 40, 13), 2px 2px 1px rgb(143, 91, 67),
+    3px 3px 1px rgb(146, 115, 101);
+}
+.breweries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .brewery {
+    flex: 0 1 400px;
+    min-height: 200px;
+    margin: 20px;
+    border-radius: 23% 77% 100% 0% / 88% 18% 82% 12%;
+    background-color: #f6ae5c;
+    background-image: linear-gradient(
+      45deg,
+      #fcc586 0%,
+      #f1a34a 40%,
+      #ca8434 74%
+    );
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+      0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+      0 16px 16px rgba(0, 0, 0, 0.12);
+
+    .content {
+      padding: 20px 40px;
+
+      h4 {
+        font-size: 1.6rem;
+
+        &.name {
+          text-align: center;
+        }
+      }
+
+      p {
+        font-size: 1.4rem;
+      }
+
+      a {
+        color: rgb(163, 112, 85);
+      }
+    }
+  }
+}
