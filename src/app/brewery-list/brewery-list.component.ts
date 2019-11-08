@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { BreweriesService } from "../breweries.service";
-import { Brewery } from "../brewery";
+import { Component, OnInit } from '@angular/core';
+import { BreweriesService } from '../breweries.service';
+import { Brewery } from '../brewery';
 
 @Component({
-  selector: "app-brewery-list",
-  templateUrl: "./brewery-list.component.html",
-  styleUrls: ["./brewery-list.component.scss"]
+  selector: 'app-brewery-list',
+  templateUrl: './brewery-list.component.html',
+  styleUrls: ['./brewery-list.component.scss']
 })
 export class BreweryListComponent implements OnInit {
   breweries: Brewery[];
@@ -17,8 +17,6 @@ export class BreweryListComponent implements OnInit {
   }
 
   getBreweries(): void {
-    this.breweriesService
-      .getBreweries()
-      .subscribe(breweries => (this.breweries = breweries));
+    this.breweriesService.getBreweries().subscribe(breweries => (this.breweries = breweries));
   }
 }

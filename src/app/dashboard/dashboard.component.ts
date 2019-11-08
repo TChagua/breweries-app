@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { BreweriesService } from "../breweries.service";
-import { Brewery } from "../brewery";
+import { Component, OnInit } from '@angular/core';
+import { BreweriesService } from '../breweries.service';
+import { Brewery } from '../brewery';
 
 @Component({
-  selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.scss"]
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
   favorites: Brewery[] = [];
@@ -19,8 +19,6 @@ export class DashboardComponent implements OnInit {
   getBreweries(): void {
     this.breweriesService
       .getBreweries()
-      .subscribe(
-        breweries => (this.favorites = breweries.filter(item => item.id > 7000))
-      );
+      .subscribe(breweries => (this.favorites = breweries.filter(item => item.id > 5000)));
   }
 }
