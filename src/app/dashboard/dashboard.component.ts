@@ -13,12 +13,12 @@ export class DashboardComponent implements OnInit {
   constructor(private breweriesService: BreweriesService) {}
 
   ngOnInit() {
-    this.getBreweries();
+    // this.getBreweries();
   }
 
-  getBreweries(): void {
-    this.breweriesService
-      .getBreweries()
-      .subscribe(breweries => (this.favorites = breweries.filter(item => item.id > 5000)));
-  }
+  // getBreweries(): void {
+  //   this.breweriesService
+  //     .getBreweries()
+  //     .subscribe(breweries => (this.favorites = breweries.filter(item => item.id > 5000)));
+  // }
 }

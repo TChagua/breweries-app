@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreweriesService } from '../breweries.service';
+import { tap, take, filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Brewery } from '../brewery';
 
 @Component({
@@ -8,15 +10,26 @@ import { Brewery } from '../brewery';
   styleUrls: ['./brewery-list.component.scss']
 })
 export class BreweryListComponent implements OnInit {
-  breweries: Brewery[];
+  breweries: Brewery[] = [];
+  query: string = '';
+  loading: boolean = false;
 
   constructor(private breweriesService: BreweriesService) {}
 
-  ngOnInit() {
-    this.getBreweries();
+  ngOnInit() {}
+
+  setQuery(query: string) {
+    this.breweries = [];
+    this.query = query;
+    this.loading = true;
+    this.getBreweries(this.query);
   }
 
-  getBreweries(): void {
-    this.breweriesService.getBreweries().subscribe(breweries => (this.breweries = breweries));
+  getBreweries(query: string): void {
+    this.breweriesService.getBreweries(query).subscribe(breweries => {
+      this.breweries = breweries;
+      this.query = '';
+      this.loading = false;
+    });
   }
 }

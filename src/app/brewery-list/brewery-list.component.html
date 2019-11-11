@@ -1,23 +1,13 @@
 <main>
   <div class="container">
-    <h2>Breweries</h2>
+    <app-search-brewery (valueChange)="setQuery($event)" [query]="query"></app-search-brewery>
     <div class="breweries">
-      <div *ngFor="let brewery of breweries" class="brewery">
-        <div class="content">
-          <h4 [style.color]="brewery.state === 'California' ? '#a7587c' : '#3e1b01'" class="name">
-            {{ brewery.id }} {{ brewery.name }}
-          </h4>
-          <h4>Address</h4>
-          <p>{{ brewery.state }}, {{ brewery.city }}, {{ brewery.street }}</p>
-          <h4 *ngIf="brewery.phone || brewery.website_url">Contact</h4>
-          <p *ngIf="brewery.phone">
-            Phone: <span>{{ brewery.phone }}</span>
-          </p>
-          <p *ngIf="brewery.website_url">
-            <a href="{{ brewery.website_url }}" target="_blank">Website</a>
-          </p>
+      <div *ngIf="loading"><h2>Loading...</h2></div>
+      <ng-container *ngIf="!!breweries">
+        <div *ngFor="let brewery of breweries" class="brewery">
+          <app-brewery [brewery]="brewery"></app-brewery>
         </div>
-      </div>
+      </ng-container>
     </div>
   </div>
 </main>

@@ -1,0 +1,19 @@
+.content {
+  padding: 20px 40px;
+
+  h4 {
+    font-size: 1.6rem;
+
+    &.name {
+      text-align: center;
+    }
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  a {
+    color: rgb(163, 112, 85);
+  }
+}

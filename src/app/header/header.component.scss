@@ -45,20 +45,18 @@ header {
           text-align: center;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          background-image: linear-gradient(
-            to right,
-            #542502,
-            #542502 50%,
-            #fff 50%
-          );
+          background-image: linear-gradient(to right, #542502, #542502 50%, #fff 50%);
           background-size: 200% 100%;
           background-position: -100%;
           transition: all 0.3s ease-in-out;
+          &.active {
+            background-position: 0%;
+          }
 
           &:before {
             position: absolute;
             display: block;
-            content: "";
+            content: '';
             width: 0;
             height: 3px;
             left: 0;

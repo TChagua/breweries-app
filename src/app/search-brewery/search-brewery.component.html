@@ -1,0 +1,9 @@
+<form [formGroup]="searchBrewery" (submit)="onSubmit()">
+  <label for="query">
+    Search for Breweries
+  </label>
+  <input type="text" placeholder="brewery" formControlName="query" name="query" />
+  <button type="submit" [disabled]="!searchBrewery.dirty || !searchBrewery.valid">
+    Search
+  </button>
+</form>
