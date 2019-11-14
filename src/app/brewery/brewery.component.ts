@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { Brewery } from '../brewery';
+import { Component, Input } from "@angular/core";
+import { Brewery } from "../brewery";
 
 @Component({
-  selector: 'app-brewery',
-  templateUrl: './brewery.component.html',
-  styleUrls: ['./brewery.component.scss']
+  selector: "app-brewery",
+  templateUrl: "./brewery.component.html",
+  styleUrls: ["./brewery.component.scss"]
 })
 export class BreweryComponent {
   constructor() {}

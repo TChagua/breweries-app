@@ -1,9 +1,13 @@
 <main>
   <div class="container">
-    <app-search-brewery (valueChange)="setQuery($event)" [query]="query"></app-search-brewery>
+    <app-search-brewery
+      (valueChange)="setQuery($event)"
+      (selectChange)="setState($event)"
+      [query]="query"
+    ></app-search-brewery>
+    <div *ngIf="loading"><h2>Loading...</h2></div>
     <div class="breweries">
-      <div *ngIf="loading"><h2>Loading...</h2></div>
-      <ng-container *ngIf="!!breweries">
+      <ng-container *ngIf="breweries">
         <div *ngFor="let brewery of breweries" class="brewery">
           <app-brewery [brewery]="brewery"></app-brewery>
         </div>

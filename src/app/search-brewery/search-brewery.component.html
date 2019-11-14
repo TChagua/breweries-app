@@ -1,9 +1,44 @@
-<form [formGroup]="searchBrewery" (submit)="onSubmit()">
-  <label for="query">
-    Search for Breweries
-  </label>
-  <input type="text" placeholder="brewery" formControlName="query" name="query" />
-  <button type="submit" [disabled]="!searchBrewery.dirty || !searchBrewery.valid">
-    Search
-  </button>
+<form [formGroup]="searchBrewery" (ngSubmit)="onSubmit()">
+  <mat-form-field class="mat-form">
+    <input
+      matInput
+      placeholder="Enter Name"
+      [formControl]="searchBrewery.controls.query"
+      name="query"
+      (change)="onQueryChange()"
+    />
+  </mat-form-field>
+  <div class="errors" *ngIf="!searchBrewery.dirty || !searchBrewery.valid">
+    <mat-error
+      *ngIf="
+        searchBrewery.touched &&
+        searchBrewery.controls.query.hasError('required')
+      "
+    >
+      Search term is required
+    </mat-error>
+    <mat-error
+      *ngIf="
+        searchBrewery.touched &&
+        searchBrewery.controls.query.hasError('minlength')
+      "
+    >
+      Search term must be at least 3 characters long
+    </mat-error>
+  </div>
+
+  <mat-form-field>
+    <mat-label>State</mat-label>
+    <mat-select
+      [formControl]="searchBrewery.controls.selectedState"
+      (selectionChange)="
+        onStateChange($event); searchBrewery.patchValue({ selectedState: '' })
+      "
+    >
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let state of states" [value]="state">{{
+        state
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </form>
