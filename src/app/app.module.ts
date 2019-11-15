@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
+import { MatRadioModule } from "@angular/material/radio";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BreweryListComponent } from "./brewery-list/brewery-list.component";
@@ -30,7 +31,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

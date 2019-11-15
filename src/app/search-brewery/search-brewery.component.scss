@@ -1,20 +1,25 @@
 form {
-  max-width: 250px;
+  max-width: 450px;
   width: 100%;
   margin: auto;
-  font-size: 1.5rem;
   padding: 20px 0;
+  font-size: 1.5rem;
 
   .mat-form {
     width: 100%;
   }
 
-  button {
+  #types-label {
+    display: block;
     margin: 10px 0;
-    font-size: 1.5rem;
+  }
 
-    &:disabled {
-      cursor: not-allowed;
+  .radio-btns-wrapper {
+    display: block;
+    width: 100%;
+
+    .radio-btn {
+      margin: 0 10px 0 0;
     }
   }
 }

@@ -18,21 +18,11 @@ export class BreweriesService {
   constructor(private http: HttpClient) {}
 
   getBreweries(query: string): Observable<Brewery[]> {
-    return this.http.get<Brewery[]>(
-      `${this.baseUrl}${this.byName}${query}`,
-      this.httpOptions
-    );
+    return this.http.get<Brewery[]>(`${this.baseUrl}${this.byName}${query}`, this.httpOptions);
   }
 
-  filterBy(
-    filterType: string,
-    term: string,
-    query: string
-  ): Observable<Brewery[]> {
-    return this.http.get<Brewery[]>(
-      `${this.baseUrl}${this.byName}${query}&${filterType}=${term}`,
-      this.httpOptions
-    );
+  filterBy(filterType: string, term: string, query: string): Observable<Brewery[]> {
+    return this.http.get<Brewery[]>(`${this.baseUrl}${this.byName}${query}&${filterType}=${term}`, this.httpOptions);
   }
 
   getBrewery(id: number): Observable<Brewery> {

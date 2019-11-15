@@ -3,7 +3,7 @@
     <app-search-brewery
       (valueChange)="setQuery($event)"
       (selectChange)="setState($event)"
-      [query]="query"
+      (typeChange)="setType($event)"
     ></app-search-brewery>
     <div *ngIf="loading"><h2>Loading...</h2></div>
     <div class="breweries">

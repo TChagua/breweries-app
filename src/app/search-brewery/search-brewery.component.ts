@@ -1,12 +1,13 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { debounceTime } from "rxjs/operators";
 
 @Component({
   selector: "app-search-brewery",
   templateUrl: "./search-brewery.component.html",
   styleUrls: ["./search-brewery.component.scss"]
 })
-export class SearchBreweryComponent {
+export class SearchBreweryComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   states: string[] = [
     "Alabama",
@@ -61,23 +62,32 @@ export class SearchBreweryComponent {
     "Wyoming"
   ];
 
-  @Input() selectedState: string = "";
-  @Input() query: string = "";
+  types: string[] = ["micro", "regional", "brewpub", "large", "planning"];
+
   @Output() valueChange = new EventEmitter();
   @Output() selectChange = new EventEmitter();
+  @Output() typeChange = new EventEmitter();
 
   searchBrewery = this.fb.group({
     query: ["", [Validators.minLength(3), Validators.required]],
-    selectedState: [""]
+    selectedState: [""],
+    type: [""]
   });
 
-  onQueryChange(): void {
-    this.query = this.searchBrewery.controls["query"].value;
-    this.valueChange.emit(this.query);
-  }
+  ngOnInit() {
+    this.searchBrewery
+      .get("query")
+      .valueChanges.pipe(debounceTime(400))
+      .subscribe((value: string) => {
+        if (this.searchBrewery.valid) this.valueChange.emit(value);
+      });
 
-  onStateChange(): void {
-    this.selectedState = this.searchBrewery.controls["selectedState"].value;
-    this.selectChange.emit(this.selectedState);
+    this.searchBrewery.get("selectedState").valueChanges.subscribe((value: string) => {
+      if (this.searchBrewery.valid) this.selectChange.emit(value);
+    });
+
+    this.searchBrewery.get("type").valueChanges.subscribe((value: string) => {
+      if (this.searchBrewery.valid) this.typeChange.emit(value);
+    });
   }
 }

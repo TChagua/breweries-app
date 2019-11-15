@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { BreweriesService } from "../breweries.service";
-// import { delay } from "rxjs/operators";
-// import { Observable } from "rxjs";
 import { Brewery } from "../brewery";
 
 @Component({
@@ -12,7 +10,6 @@ import { Brewery } from "../brewery";
 export class BreweryListComponent implements OnInit {
   breweries: Brewery[] = [];
   query: string = "";
-  selectedState: string = "";
   loading: boolean = false;
 
   constructor(private breweriesService: BreweriesService) {}
@@ -20,18 +17,18 @@ export class BreweryListComponent implements OnInit {
   ngOnInit() {}
 
   setQuery(query: string) {
-    // this.breweries = [];
     this.query = query;
     this.loading = true;
-    // if (!this.selectedState) {
-    //   console.log(this.selectedState);
     this.getBreweries(this.query);
-    // }
   }
 
   setState(selectedState: string) {
-    this.selectedState = selectedState.toLowerCase();
-    this.filterByState(this.selectedState, this.query);
+    this.filterByState(selectedState, this.query);
+    this.loading = true;
+  }
+
+  setType(selectedType: string) {
+    this.filterByType(selectedType, this.query);
     this.loading = true;
   }
 
@@ -43,11 +40,16 @@ export class BreweryListComponent implements OnInit {
   }
 
   filterByState(state: string, query: string): void {
-    this.breweriesService
-      .filterBy("by_state", state, query)
-      .subscribe(breweries => {
-        this.breweries = breweries;
-        this.loading = false;
-      });
+    this.breweriesService.filterBy("by_state", state, query).subscribe(breweries => {
+      this.breweries = breweries;
+      this.loading = false;
+    });
+  }
+
+  filterByType(type: string, query: string): void {
+    this.breweriesService.filterBy("by_type", type, query).subscribe(breweries => {
+      this.breweries = breweries;
+      this.loading = false;
+    });
   }
 }

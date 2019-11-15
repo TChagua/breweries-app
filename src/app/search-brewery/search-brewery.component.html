@@ -1,44 +1,28 @@
-<form [formGroup]="searchBrewery" (ngSubmit)="onSubmit()">
+<form [formGroup]="searchBrewery">
   <mat-form-field class="mat-form">
-    <input
-      matInput
-      placeholder="Enter Name"
-      [formControl]="searchBrewery.controls.query"
-      name="query"
-      (change)="onQueryChange()"
-    />
+    <input matInput placeholder="Enter Name" [formControl]="searchBrewery.controls.query" />
   </mat-form-field>
   <div class="errors" *ngIf="!searchBrewery.dirty || !searchBrewery.valid">
-    <mat-error
-      *ngIf="
-        searchBrewery.touched &&
-        searchBrewery.controls.query.hasError('required')
-      "
-    >
+    <mat-error *ngIf="searchBrewery.touched && searchBrewery.controls.query.hasError('required')">
       Search term is required
     </mat-error>
-    <mat-error
-      *ngIf="
-        searchBrewery.touched &&
-        searchBrewery.controls.query.hasError('minlength')
-      "
-    >
+    <mat-error *ngIf="searchBrewery.touched && searchBrewery.controls.query.hasError('minlength')">
       Search term must be at least 3 characters long
     </mat-error>
   </div>
 
   <mat-form-field>
-    <mat-label>State</mat-label>
-    <mat-select
-      [formControl]="searchBrewery.controls.selectedState"
-      (selectionChange)="
-        onStateChange($event); searchBrewery.patchValue({ selectedState: '' })
-      "
-    >
+    <mat-label>Filter by State</mat-label>
+    <mat-select [formControl]="searchBrewery.controls.selectedState">
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let state of states" [value]="state">{{
-        state
-      }}</mat-option>
+      <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <label id="types-label">Filter by Brewery Type:</label>
+  <mat-radio-group [formControl]="searchBrewery.controls.type" aria-labelledby="types-label" class="radio-btns-wrapper">
+    <mat-radio-button class="radio-btn" color="primary" *ngFor="let type of types" [value]="type">
+      {{ type }}
+    </mat-radio-button>
+  </mat-radio-group>
 </form>
