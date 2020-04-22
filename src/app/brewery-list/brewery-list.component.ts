@@ -23,7 +23,6 @@ export class BreweryListComponent {
   setState(selectedState: string) {
     this.filterByState(selectedState, this.query)
     this.loading = true
-    console.log('here', selectedState)
   }
 
   setType(selectedType: string) {

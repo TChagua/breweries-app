@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 import { BreweryListComponent } from './brewery-list/brewery-list.component'
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { RandomBeerComponent } from './random-beer/random-beer.component'
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
   { path: 'breweries', component: BreweryListComponent },
+  { path: 'random', component: RandomBeerComponent },
   { path: '', redirectTo: '/breweries', pathMatch: 'full' },
 ]
 

@@ -145,3 +145,11 @@ h6 {
   padding: 20px;
   color: #3e1b01;
 }
+
+mat-card-content.mat-card-content {
+  display: flex;
+}
+
+mat-expansion-panel-header.mat-expansion-panel-header {
+  min-height: 100px;
+}

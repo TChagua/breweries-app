@@ -1,0 +1,50 @@
+.card {
+  max-width: 500px;
+  width: 100%;
+  margin: 30px auto;
+  background: wheat;
+
+  mat-card-subtitle {
+    font-style: italic;
+  }
+
+  .beer-image {
+    max-height: 400px;
+    max-width: 35%;
+
+    img {
+      max-width: 100%;
+      max-height: 400px;
+      margin: auto;
+      object-fit: contain;
+    }
+  }
+
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 0 10px;
+
+    em {
+      align-self: flex-end;
+    }
+  }
+
+  .panel {
+    background: antiquewhite;
+  }
+
+  button {
+    margin: 10px;
+  }
+
+  .with-divider {
+    display: flex;
+    justify-content: space-evenly;
+
+    .divider {
+      width: 0;
+      border-right: 3px solid #632c02;
+    }
+  }
+}

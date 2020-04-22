@@ -1,0 +1,81 @@
+<main>
+  <mat-card class="card" *ngIf="beer">
+    <mat-card-header>
+      <mat-card-title>{{ beer.name }}</mat-card-title>
+      <mat-card-subtitle>{{ beer.tagline }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="beer.image_url" class="beer-image">
+        <img mat-card-image src="{{ beer.image_url }}" alt="Beer" />
+      </div>
+      <div class="text-wrapper">
+        <em>First Brewed in {{ beer.first_brewed }}</em>
+        <p>
+          {{ beer.description }}
+        </p>
+        <div>
+          <mat-list *ngIf="beer.food_pairing">
+            <h2 matSubheader>Pairs greatly with</h2>
+            <mat-list-item *ngFor="let dish of beer.food_pairing">
+              <mat-divider></mat-divider>
+              <mat-icon mat-list-icon>restaurant</mat-icon>
+              {{ dish }}
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-expansion-panel class="panel" *ngIf="beer.ingredients">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ingredients
+        </mat-panel-title>
+        <mat-panel-description *ngIf="beer.brewers_tips">
+          {{ beer.brewers_tips }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-list dense *ngIf="beer.ingredients.malt">
+        <h2 matSubheader>Malts</h2>
+        <mat-list-item *ngFor="let malt of beer.ingredients.malt">
+          <mat-icon mat-list-icon>eco</mat-icon>
+          {{ malt.name }} - {{ malt.amount.value }} {{ malt.amount.unit }}
+        </mat-list-item>
+      </mat-list>
+      <mat-list dense *ngIf="beer.ingredients.hops">
+        <h2 matSubheader>Hops</h2>
+        <mat-list-item *ngFor="let hop of beer.ingredients.hops">
+          <mat-icon mat-list-icon>local_bar</mat-icon>
+          <p matLine>
+            {{ hop.name }} - {{ hop.amount.value }} {{ hop.amount.unit }}
+          </p>
+          <p class="with-divider" matLine>
+            <span>Add in {{ hop.add }}</span>
+            <span class="divider"></span>
+            <span>
+              Gives {{ hop.attribute }}
+              <span
+                *ngIf="hop.attribute === 'Bitter' || hop.attribute === 'bitter'"
+              >
+                taste
+              </span>
+            </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+      <mat-list dense *ngIf="beer.ingredients.yeast">
+        <h2 matSubheader>Yeast</h2>
+        <mat-list-item>
+          <mat-icon mat-list-icon>drag_indicator</mat-icon>
+          {{ beer.ingredients.yeast }}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+    <mat-card-footer>
+      <button (click)="getBeer()" color="primary" mat-raised-button>
+        New Random
+      </button>
+    </mat-card-footer>
+  </mat-card>
+</main>

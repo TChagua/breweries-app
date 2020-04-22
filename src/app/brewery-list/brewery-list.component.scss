@@ -6,6 +6,12 @@ h2 {
     3px 3px 1px rgb(146, 115, 101);
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .breweries {
   display: flex;
   flex-wrap: wrap;
@@ -16,12 +22,12 @@ h2 {
     min-height: 200px;
     margin: 20px;
     border-radius: 23% 77% 100% 0% / 88% 18% 82% 12%;
-    background-color: #f6ae5c;
+    background-color: blanchedalmond;
     background-image: linear-gradient(
       45deg,
-      #fcc586 0%,
-      #f1a34a 40%,
-      #ca8434 74%
+      papayawhip 0%,
+      blanchedalmond 40%,
+      peachpuff 74%
     );
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
       0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),

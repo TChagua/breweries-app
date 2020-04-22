@@ -1,5 +1,4 @@
-// tslint:disable: variable-name
-export class Brewery {
+export interface Brewery {
   id: number
   name: string
   brewery_type: string
