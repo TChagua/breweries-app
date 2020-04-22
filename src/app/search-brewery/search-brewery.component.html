@@ -50,23 +50,4 @@
       {{ type }}
     </mat-radio-button>
   </mat-radio-group>
-
-  <div class="chips-wrapper">
-    <mat-label>Choose tag</mat-label>
-    <div class="chips-list">
-      <mat-chip-list
-        multiple="false"
-        [formControl]="searchBrewery.controls.selectedTag"
-      >
-        <mat-chip
-          *ngFor="let tag of tags"
-          [value]="selected"
-          selectable="true"
-          (select)="console.log('Value changed')"
-        >
-          {{ tag }}
-        </mat-chip>
-      </mat-chip-list>
-    </div>
-  </div>
 </form>

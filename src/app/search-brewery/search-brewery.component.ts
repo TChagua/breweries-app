@@ -63,7 +63,6 @@ export class SearchBreweryComponent implements OnInit {
   ]
 
   types: string[] = ['micro', 'regional', 'brewpub', 'large', 'planning']
-  tags: string[] = ['pet-friendly', 'patio', 'board-games']
 
   @Output() valueChange = new EventEmitter()
   @Output() selectChange = new EventEmitter()
@@ -73,13 +72,12 @@ export class SearchBreweryComponent implements OnInit {
     query: ['', [Validators.minLength(3), Validators.required]],
     selectedState: [''],
     type: [''],
-    selectedTag: ['', [Validators.required]],
   })
 
   ngOnInit() {
     this.searchBrewery
       .get('query')
-      .valueChanges.pipe(debounceTime(400))
+      .valueChanges.pipe(debounceTime(500))
       .subscribe((value: string) => {
         if (this.searchBrewery.valid) {
           this.valueChange.emit(value)
@@ -99,11 +97,5 @@ export class SearchBreweryComponent implements OnInit {
         this.typeChange.emit(value)
       }
     })
-
-    this.searchBrewery
-      .get('selectedTag')
-      .valueChanges.subscribe((value: string) => {
-        console.log(value)
-      })
   }
 }
