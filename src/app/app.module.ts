@@ -1,18 +1,19 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { MatInputModule } from "@angular/material/input";
-import { MatSelectModule } from "@angular/material/select";
-import { MatRadioModule } from "@angular/material/radio";
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { BreweryListComponent } from "./brewery-list/brewery-list.component";
-import { HeaderComponent } from "./header/header.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { SearchBreweryComponent } from "./search-brewery/search-brewery.component";
-import { BreweryComponent } from "./brewery/brewery.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
+import { MatRadioModule } from '@angular/material/radio'
+import { MatChipsModule } from '@angular/material/chips'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { BreweryListComponent } from './brewery-list/brewery-list.component'
+import { HeaderComponent } from './header/header.component'
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { SearchBreweryComponent } from './search-brewery/search-brewery.component'
+import { BreweryComponent } from './brewery/brewery.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HeaderComponent,
     DashboardComponent,
     SearchBreweryComponent,
-    BreweryComponent
+    BreweryComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +33,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     MatInputModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatChipsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

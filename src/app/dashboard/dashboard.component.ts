@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { BreweriesService } from "../breweries.service";
-import { Brewery } from "../brewery";
+import { Component, OnInit } from '@angular/core'
+import { BreweriesService } from '../breweries.service'
+import { Brewery } from '../brewery'
 
 @Component({
-  selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.scss"]
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  favorites: Brewery[] = [];
+  favorites: Brewery[] = []
 
   constructor(private breweriesService: BreweriesService) {}
 
